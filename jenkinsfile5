@@ -1,0 +1,31 @@
+node('master') {
+  stage('Developer') {
+    echo 'hello Developer'
+  }
+  stage('Build') {
+    echo 'Hllo build team'
+  }
+  stage('test') {
+    echo 'Hello tester'
+  }
+  stage('deploy') {
+    echo 'Hello deploy team'
+  }
+  stage('quality assurance') {
+      echo 'Hello QA Team'
+  }
+  stage('release') {
+      echo 'hello release team'
+  }
+  stage('Send email') {
+    def mailRecipients = "g3_puspa11@yahoo.com"
+    def jobName = currentBuild.fullDisplayName
+
+    emailext body: '''${SCRIPT, template="groovy-html.template"}''',
+        mimeType: 'text/html',
+        subject: "[Jenkins] ${jobName}",
+        to: "${mailRecipients}",
+        replyTo: "${mailRecipients}",
+        recipientProviders: [[$class: 'CulpritsRecipientProvider']]
+}
+}
