@@ -1,6 +1,6 @@
 node('master) {
     stage('Developer') {
-        echo 'this url is for groovy tutorial https://www.youtube.com/watch?v=B98jc8hdu9g&t=872s'
+        echo 'this url is for groovy tutorial'
     }
     stage('Build') {
         echo 'that url has been build and its ready'
