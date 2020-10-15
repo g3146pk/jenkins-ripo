@@ -1,7 +1,19 @@
-agent {
+pipeline {
+    agent any
+    stages {
+        stage('one') {
+            steps {
+                echo 'this is docker file'
+            }
+        }
+        stage(two ) {
     docker {
         image 'maven:3-alpine'
         label 'my-defined-label'
         args  '-v /tmp:/tmp'
     }
+}
+        }
+    }
+    
 }
